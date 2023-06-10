@@ -17,7 +17,7 @@ def main(args):
 
     pic_path = args.source_image
     audio_path = args.driven_audio
-    save_dir = os.path.join(args.result_dir, strftime("%Y_%m_%d_%H.%M.%S"))
+    save_dir = os.path.join(args.result_dir + "_inter", args.filename)
     os.makedirs(save_dir, exist_ok=True)
     pose_style = args.pose_style
     device = args.device
@@ -87,8 +87,9 @@ def main(args):
     result = animate_from_coeff.generate(data, save_dir, pic_path, crop_info, \
                                 enhancer=args.enhancer, background_enhancer=args.background_enhancer, preprocess=args.preprocess, img_size=args.size)
     
-    shutil.move(result, save_dir+'.mp4')
-    print('The generated video is named:', save_dir+'.mp4')
+    shutil.move(result, os.path.join(args.result_dir, args.filename+'.mp4'))
+    shutil.rmtree(args.result_dir+'_inter')
+    print('The generated video is named:', os.path.join(args.result_dir, args.filename+'.mp4'))
 
     if not args.verbose:
         shutil.rmtree(save_dir)
@@ -103,6 +104,7 @@ if __name__ == '__main__':
     parser.add_argument("--ref_pose", default=None, help="path to reference video providing pose")
     parser.add_argument("--checkpoint_dir", default='./checkpoints', help="path to output")
     parser.add_argument("--result_dir", default='./results', help="path to output")
+    parser.add_argument("--filename", default='sample_output', help="device to run the model")
     parser.add_argument("--pose_style", type=int, default=0,  help="input pose style from [0, 46)")
     parser.add_argument("--batch_size", type=int, default=2,  help="the batch size of facerender")
     parser.add_argument("--size", type=int, default=256,  help="the image size of the facerender")

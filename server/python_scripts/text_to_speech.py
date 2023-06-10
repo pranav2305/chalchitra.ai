@@ -7,8 +7,11 @@ Note: ssml must be well-formed according to:
 Remember to set GOOGLE_APPLICATION_CREDENTIALS=<PATH> for deployment
 """
 from google.cloud import texttospeech
+import os
 
 def generate_speech_from_text(target, text, gender, i):
+    result_dir = "./results/audios"
+
     # Instantiates a client
     client = texttospeech.TextToSpeechClient()
 
@@ -40,7 +43,10 @@ def generate_speech_from_text(target, text, gender, i):
     )
 
     # The response's audio_content is binary.
-    with open("{}.mp3".format(i), "wb") as out:
+    filepath = os.path.join(result_dir, str(i) + '.mp3')
+    with open(filepath, "wb") as out:
         # Write the response to the output file.
         out.write(response.audio_content)
-        print('Audio content written to file "{}.mp3"'.format(i))
+        print('Audio content written to file {}'.format(filepath))
+
+    return filepath

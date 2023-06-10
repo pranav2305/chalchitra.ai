@@ -4,6 +4,8 @@ from python_scripts.text_to_script import generate_script_from_text
 from python_scripts.text_to_image import generate_image_from_text
 from python_scripts.translate import translate_text
 from python_scripts.text_to_speech import generate_speech_from_text
+from python_scripts.generate_lip_sync import generate_lip_sync
+from python_scripts.stitch_videos import stitch_videos
 
 app = Flask(__name__)
 
@@ -37,7 +39,8 @@ def generate_movie_from_text():
 
     print(response)
 
-    generated_images_paths = []
+    generated_videos_paths = []
+    subtitles = []
 
     scenes = response['scenes']
     speakers = response['speakers']
@@ -48,7 +51,7 @@ def generate_movie_from_text():
         dialogues = scene['dialogues']
         narrator = scene['narrator']
 
-        for dialogue in dialogues:
+        for j, dialogue in enumerate(dialogues):
             speaker_id = dialogue['speaker']
             speaker = next((sp for sp in speakers if sp['id'] == speaker_id), None)
 
@@ -59,17 +62,25 @@ def generate_movie_from_text():
                 gender = speaker['gender']
 
                 # Call the generate_image_from_text function with the appropriate parameters
-                image_path = generate_image_from_text(character, action_or_place, feeling, gender, i)
+                image_path = generate_image_from_text(character, action_or_place, feeling, gender, f"{i}_{j}")
                 print(image_path)
 
+                subtitles.append(dialogue['dialogue'])
                 translated_text = translate_text(language, dialogue['dialogue'])
                 print(translated_text)
 
                 # Call the generate_speech_from_text function with the appropriate parameters
-                speech_path = generate_speech_from_text(language, translated_text, gender, i)
+                speech_path = generate_speech_from_text(language, translated_text, gender, f"{i}_{j}")
+
+                # Call the generate_lip_sync function with the appropriate parameters
+                lip_sync_path = generate_lip_sync(image_path, speech_path, f"{i}_{j}")
+                print(lip_sync_path)
+
+                generated_videos_paths.append(lip_sync_path)
 
             else:
                 print(f"Speaker with id {speaker_id} not found.")
 
-
+    # Call stitch videos
+    stitch_videos(generated_videos_paths, subtitles, "./results/output")
     return response
