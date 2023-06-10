@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from stability_sdk import client
 import stability_sdk.interfaces.gooseai.generation.generation_pb2 as generation
 import os
+import warnings
 import io
 
 load_dotenv()
@@ -72,5 +73,4 @@ def stable_diff(person, speech, name, features, cfg, step):
 
                 img.save(image_path)
 
-                print("hii")
                 return image_path
