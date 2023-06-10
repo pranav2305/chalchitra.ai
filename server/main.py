@@ -5,7 +5,8 @@ from python_scripts.text_to_image import generate_image_from_text
 from python_scripts.translate import translate_text
 from python_scripts.text_to_speech import generate_speech_from_text
 from python_scripts.generate_lip_sync import generate_lip_sync
-from python_scripts.stitch_videos import stitch_videos
+# from python_scripts.stitch_videos import stitch_videos
+from python_scripts.stitch import stitch_videos
 
 app = Flask(__name__)
 
@@ -82,5 +83,5 @@ def generate_movie_from_text():
                 print(f"Speaker with id {speaker_id} not found.")
 
     # Call stitch videos
-    stitch_videos(generated_videos_paths, subtitles, "./results/output")
+    stitch_videos(generated_videos_paths, "./results/output.mp4")
     return response

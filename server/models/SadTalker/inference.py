@@ -91,8 +91,8 @@ def main(args):
     shutil.rmtree(args.result_dir+'_inter')
     print('The generated video is named:', os.path.join(args.result_dir, args.filename+'.mp4'))
 
-    if not args.verbose:
-        shutil.rmtree(save_dir)
+    # if not args.verbose:
+    #     shutil.rmtree(save_dir)
 
     
 if __name__ == '__main__':
@@ -143,5 +143,13 @@ if __name__ == '__main__':
     else:
         args.device = "cpu"
 
-    main(args)
+    try:
+        main(args)
+    except Exception as e:
+        shutil.rmtree(args.result_dir+'_inter')
+        if args.preprocess=='full':
+            args.preprocess='crop'
+        else:
+            args.preprocess='full'
+        main(args)
 

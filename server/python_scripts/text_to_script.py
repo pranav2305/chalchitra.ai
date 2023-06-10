@@ -17,11 +17,11 @@ def generate_script_from_text(text):
 
     prompt = f"""
         Create a meaningful story about {text} with the following constraints.
-        The entire story should have 1-2 scenes and a maximum of 3 dialogues.
+        The entire story should have 1-2 scenes and a minimum of 2 dialogues.
         Follow the JSON format given below strictly without spaces and new line or next line characters.
         Print the entire output in a single line. Make sure to complete the json.
         JSON Format:
-        {{"title":"<movie_title>","speakers":[{{"id":<speaker_id>,"name":"<speaker_name">,"gender":"<speaker_gender>","visual":"<visual_desc_of_speaker>"}}]"scenes":[{{"description":"<scene_description>","narrator":"<narrator_dialogue>","dialogues":[{{"speaker":"<speaker_id>","dialogue":"<dialogue_text>","expression":"<speaker_expression>"}}]}}]}}
+        {{"title":"<movie_title>","speakers<list_of_all_speakers>":[{{"id":<speaker_id>,"name":"<speaker_name">,"gender":"<speaker_gender>","visual":"<visual_desc_of_speaker>"}}]"scenes":[{{"description":"<scene_description>","narrator":"<narrator_dialogue>","dialogues":[{{"speaker":"<speaker_id>","dialogue":"<dialogue_text>","expression":"<speaker_expression>"}}]}}]}}
     """
 
     print(prompt)
