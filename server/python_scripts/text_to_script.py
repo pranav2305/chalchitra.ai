@@ -26,11 +26,12 @@ def generate_script_from_text(text):
 
     print(prompt)
 
-    res_json = """
-        {"title":"The Brave Heart","speakers":[{"id":1,"name":"Priya","gender":"female","visual":"An Indian girl with short hair and determined eyes"}],"scenes":[{"description":"Priya at the Army Recruitment Office","narrator":"Priya walked into the Army Recruitment Office with her head held high.","dialogues":[{"speaker":1,"dialogue":"I want to join the Indian Army.","expression":"determined"}]}]}
-    """
+    # Sample response from the API
+    # res_json = """
+    #     {"title":"The Brave Heart","speakers":[{"id":1,"name":"Priya","gender":"female","visual":"An Indian girl with short hair and determined eyes"}],"scenes":[{"description":"Priya at the Army Recruitment Office","narrator":"Priya walked into the Army Recruitment Office with her head held high.","dialogues":[{"speaker":1,"dialogue":"I want to join the Indian Army.","expression":"determined"}]}]}
+    # """
 
-    return json.loads(res_json)
+    # return json.loads(res_json)
 
     openai.api_key = os.environ['OPENAI_API']
 
