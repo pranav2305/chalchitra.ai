@@ -23,3 +23,11 @@ htmlcov/
 .coverage
 .coverage.*
 *,cover
+results/*
+
+stable-diffusion-videos
+cog-deforum-stable-diffusion
+deforum-stable-diffusion
+env-deforum
+output
+dreams

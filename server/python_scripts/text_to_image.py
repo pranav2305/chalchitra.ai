@@ -40,7 +40,7 @@ def generate_image_from_text(character, action_or_place, feeling, gender, i):
 
     # Check if the folder exists, create it if necessary
 
-    folder_path = "./images"
+    folder_path = "./results/images"
     # Save the generated image to the folder
 
     print(answer)
