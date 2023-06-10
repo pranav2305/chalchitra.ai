@@ -2,6 +2,7 @@
 from dotenv import load_dotenv
 from stability_sdk import client
 import stability_sdk.interfaces.gooseai.generation.generation_pb2 as generation
+from PIL import Image
 import os
 import warnings
 import io
@@ -17,22 +18,15 @@ stability_api = client.StabilityInference(
     engine="stable-diffusion-xl-beta-v2-2-2",
 )
 
-def stable_diff(person, speech, name, features, cfg, step):
+def generate_image_from_text(character, action_or_place, feeling, gender, i):
 
     answer = stability_api.generate(
         prompt=f"""
-
-        Create a comic-style image where {person} says, "{speech}".
-        Capture the expressions of the user from the dialogue.
-        Add styles based on the following features {features}
-
+        Create a comic-style image where {character} is {action_or_place}
+        with the an {feeling} expression. Gender - {gender}
         """,
 
         seed=992446758,
-
-        steps=int(step),
-
-        cfg_scale=int(cfg),
 
         width=512,
 
@@ -65,7 +59,8 @@ def stable_diff(person, speech, name, features, cfg, step):
 
             if artifact.type == generation.ARTIFACT_IMAGE:
 
-                image_path = os.path.join(folder_path, f"{name}.png")
+                image_path = os.path.join(folder_path, f"{i}.png")
+                print(image_path)
 
                 img_binary = io.BytesIO(artifact.binary)
 

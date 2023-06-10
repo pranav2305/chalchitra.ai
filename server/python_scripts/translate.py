@@ -19,8 +19,4 @@ def translate_text(target: str, text: str) -> dict:
     print("Translation: {}".format(result["translatedText"]))
     print("Detected source language: {}".format(result["detectedSourceLanguage"]))
 
-    return result
-
-
-if __name__ == "__main__":
-    translate_text("hi", "AI is the future of mankind.")
+    return result["translatedText"]
