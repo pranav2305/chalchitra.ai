@@ -1,4 +1,4 @@
-![Chalchitra ai](https://github.com/pranav2305/chalchitra.ai/assets/76661350/0977c6b9-7618-495f-a09a-0d99f7347653)
+<img src="./Chalchitra.ai.png" alt="chalchitra.ai" border="1" width="100"/>
 
 # chalchitra.ai
 Transform your text into captivating, lipsynced animated videos effortlessly, with multilingual support including a wide range of Indian languages.
