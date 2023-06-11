@@ -87,4 +87,4 @@ def generate_movie_from_text():
 
     # Call stitch videos
     stitch_videos(generated_videos_paths, f"./results/outputs/{story_id}_output.mp4")
-    return send_file(f"./results/outputs/{story_id}_output.mp4", mimetype='video/mp4')
+    return send_file(f"./results/outputs/{story_id}_output.mp4", mimetype='video/mp4', as_attachment=True)
