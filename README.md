@@ -12,11 +12,61 @@ Transform your text into captivating, lipsynced animated videos effortlessly, wi
 
 ## Project Idea
 
+Animated videos are loved by almost everyone but the time and expertise required to make them is quite high. Chalchitra.ai was born out of the need to bridge the gap between text-based content and engaging videos. We recognized the demand for synchronized lip-synced animated videos with multilingual support, particularly in Indian languages, empowering content creators, educators, and businesses to convey their messages effectively and captivate their audiences.
+
+### Features
+
+1. Transform your text into captivating short animated videos effortlessly. Chalchitra.ai brings your words to life with vibrant visuals and synchronized lip movements.
+
+2. Chalchitra.ai goes beyond language barriers. It offers extensive multilingual support, including a diverse range of Indian languages. 
+
+Be at an ad film, a storyboard, a short reel or a quick video for your product, Chalchitra.ai has got you covered
+
+### Use Cases
+
+1. Digital Advertising: Generate attention-grabbing animated ads with vibrant visuals effectively conveying your marketing message to the target audience, in a fraction of a time.
+
+2. E-Learning and Education: Enhance the learning experience with visually appealing animated videos that explain complex topics, aided by multilingual support.
+
+3. Language Learning: Aid language learners by creating animated videos demonstrating correct pronunciation, lip movements, and contextual usage of words and phrases in different languages.
+
+4. Entertainment and Media: Produce animated videos for entertainment purposes, such as funny skits, comedic dialogues, or animated web series.
+
+5. News and Information Sharing: Present news updates, information, or public announcements in visually appealing animated videos, grabbing attention and making information easily digestible.
+
+6. Personalized Greetings and Invitations: Add a personal touch to greetings, invitations, or special messages by transforming them into animated videos, delivering heartfelt messages.
+
 ## Our Approach
+
+**Text Manipulation with GPT-3.5 Turbo**: When a user submits their text and preferred language, the text is transformed into a script and returned in the JSON format with several attributes.
+
+**Image Generation using Stable Diffusion**: With the structured JSON, the relevant details are inputted into the stable diffusion model. The prompts are manipulated to ensure that the generated images align seamlessly with the intended narrative and artistic style.
+
+**Speech Translation using Google Cloud Translation API**: The character's dialogues are translated into the language selected by the user.
+
+**Audio generation using Google Cloud Text to Speech API**: The audio dialogues of the character are created in the specified language using the Wavenet model, taking into consideration the character's gender and region.
+
+**Lip syncing using SadTalker**: Stylized audio-driven single image talking face animation is achieved using SadTalker by supplying an image and the corresponding dialogue audio.
+
+**Stitching all the generated videos**: All the generated videos are combined into a single mp4 file using FFMPEG.
 
 ## Challenges We Faced
 
+- Finding appropriate pre-trained models for our use cases
+- Getting the SadTalker model up and running on our local system
+- Stitching all the videos together
+
 ## Technologies We Used
+
+- OpenAI's ChatGPT
+- Stable Diffusion
+- Wavenet (Google Cloud Text to Speech API)
+- Google Cloud Translation API
+- SadTalker
+- Flask
+- Next.js
+- FastAPI
+- FFMPEG
 
 ## Network Diagram
 
