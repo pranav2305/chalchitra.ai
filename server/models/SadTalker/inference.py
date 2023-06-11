@@ -142,14 +142,20 @@ if __name__ == '__main__':
         args.device = "cuda"
     else:
         args.device = "cpu"
+    trial = 1
+    preprocess_opts = ['crop', 'full', 'resize', 'extcrop', 'extfull', '']
 
-    try:
-        main(args)
-    except Exception as e:
-        shutil.rmtree(args.result_dir+'_inter')
-        if args.preprocess=='full':
-            args.preprocess='crop'
-        else:
-            args.preprocess='full'
-        main(args)
+    while trial < len(preprocess_opts):
+        try:
+            print("Try preprocess method:", args.preprocess)
+            main(args)
+            break
+        except Exception as e:
+            try:
+                shutil.rmtree(args.result_dir+'_inter')
+            except:
+                pass
+            args.preprocess = preprocess_opts[trial]
+            trial+=1
+        
 

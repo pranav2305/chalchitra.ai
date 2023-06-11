@@ -21,6 +21,7 @@ export default function Hero() {
             <circle cx="155" cy="443" r="64" />
           </g>
         </svg>
+        {/* <img src="/assets/Chalchitra.ai.png" alt="Chalchitra-logo" /> */}
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6">

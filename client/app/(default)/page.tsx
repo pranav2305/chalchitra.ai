@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Home - Simple',
+  title: 'Chalchitra.ai | Home',
   description: 'Page description',
 }
 
