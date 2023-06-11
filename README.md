@@ -3,6 +3,9 @@
 # chalchitra.ai
 Transform your text into captivating, lipsynced animated videos effortlessly, with multilingual support including a wide range of Indian languages.
 
+## Demo
+https://github.com/pranav2305/chalchitra.ai/assets/76661350/b4e278c8-4e91-4220-82d2-b84cb6d267b5
+
 ## Example
 https://github.com/pranav2305/chalchitra.ai/assets/79962251/4702dac0-afc6-40cd-9ca4-0fe584d308ed
 
