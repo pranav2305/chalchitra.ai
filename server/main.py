@@ -7,6 +7,7 @@ from python_scripts.text_to_speech import generate_speech_from_text
 from python_scripts.generate_lip_sync import generate_lip_sync
 # from python_scripts.stitch_videos import stitch_videos
 from python_scripts.stitch import stitch_videos
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -31,14 +32,21 @@ def test():
 # TODO: Convert to POST request
 @app.route('/gen', methods=['GET'])
 def generate_movie_from_text():
-
     # user_input = request.get_json()['userInput']
     # language = request.get_json()['language']
     language = 'hi-IN'
     # response = convert_text_to_script(user_input)
-    response = generate_script_from_text("An indian girl trying to enter the army")
+    response = generate_script_from_text("""Transform your text into captivating short animated videos effortlessly. Chalchitra.ai brings your words to life with vibrant visuals and engaging animations.
+
+With Chalchitra.ai, your animated videos come alive with perfectly synchronized lip movements. Each character in the video seamlessly matches the spoken words, enhancing the realism and impact of your content.
+
+Chalchitra.ai goes beyond language barriers. It offers extensive multilingual support, including a diverse range of Indian languages. 
+
+Be at an ad film, a storyboard, a short reel or a quick video for your product, Chalchitra.ai has got you covered""")
 
     print(response)
+    # use timestamp as story_id
+    story_id = datetime.now().strftime("%Y%m%d%H%M%S")
 
     generated_videos_paths = []
     subtitles = []
@@ -63,7 +71,7 @@ def generate_movie_from_text():
                 gender = speaker['gender']
 
                 # Call the generate_image_from_text function with the appropriate parameters
-                image_path = generate_image_from_text(character, action_or_place, feeling, gender, f"{i}_{j}")
+                image_path = generate_image_from_text(character, action_or_place, feeling, gender, f"{story_id}_{i}_{j}")
                 print(image_path)
 
                 subtitles.append(dialogue['dialogue'])
@@ -71,10 +79,10 @@ def generate_movie_from_text():
                 print(translated_text)
 
                 # Call the generate_speech_from_text function with the appropriate parameters
-                speech_path = generate_speech_from_text(language, translated_text, gender, f"{i}_{j}")
+                speech_path = generate_speech_from_text(language, translated_text, gender, f"{story_id}_{i}_{j}")
 
                 # Call the generate_lip_sync function with the appropriate parameters
-                lip_sync_path = generate_lip_sync(image_path, speech_path, f"{i}_{j}")
+                lip_sync_path = generate_lip_sync(image_path, speech_path, f"{story_id}_{i}_{j}")
                 print(lip_sync_path)
 
                 generated_videos_paths.append(lip_sync_path)
@@ -83,5 +91,5 @@ def generate_movie_from_text():
                 print(f"Speaker with id {speaker_id} not found.")
 
     # Call stitch videos
-    stitch_videos(generated_videos_paths, "./results/output.mp4")
-    return response
+    stitch_videos(generated_videos_paths, f"./results/outputs/{story_id}_output.mp4")
+    return send_file(f"./results/outputs/{story_id}_output.mp4", mimetype='video/mp4')

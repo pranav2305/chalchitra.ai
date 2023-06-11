@@ -16,12 +16,12 @@ os.environ['OPENAI_API'] = os.getenv('OPEN_AI_API')
 def generate_script_from_text(text):
 
     prompt = f"""
-        Create a meaningful story about {text} with the following constraints.
-        The entire story should have 1-2 scenes and a minimum of 2 dialogues.
+        Create a meaningful story about "{text}" with the following constraints.
+        The entire story should have a minimum of 2 scenes and a minimum of 7 dialogues.
         Follow the JSON format given below strictly without spaces and new line or next line characters.
-        Print the entire output in a single line. Make sure to complete the json.
+        Print the entire output in a single line. Make sure to complete the json and add all speaker to "speakers" list.
         JSON Format:
-        {{"title":"<movie_title>","speakers<list_of_all_speakers>":[{{"id":<speaker_id>,"name":"<speaker_name">,"gender":"<speaker_gender>","visual":"<visual_desc_of_speaker>"}}]"scenes":[{{"description":"<scene_description>","narrator":"<narrator_dialogue>","dialogues":[{{"speaker":"<speaker_id>","dialogue":"<dialogue_text>","expression":"<speaker_expression>"}}]}}]}}
+        {{"title":"<movie_title>","speakers<list_of_all_speakers>":[{{"id":<speaker_id>,"name":"<speaker_name">,"gender":"<speaker_gender>","visual":"<visual_desc_of_speaker>"}}]"scenes":[{{"description":"<scene_location>","narrator":"<narrator_dialogue>","dialogues":[{{"speaker":"<speaker_id>","dialogue":"<dialogue_text>","expression":"<speaker_expression>"}}]}}]}}
     """
 
     print(prompt)
@@ -47,7 +47,7 @@ def generate_script_from_text(text):
 
         temperature=0.6,
 
-        max_tokens=500)
+        max_tokens=3000)
 
     print(response)
 
