@@ -1,3 +1,5 @@
+![Chalchitra ai](https://github.com/pranav2305/chalchitra.ai/assets/76661350/0977c6b9-7618-495f-a09a-0d99f7347653)
+
 # chalchitra.ai
 Transform your text into captivating, lipsynced animated videos effortlessly, with multilingual support including a wide range of Indian languages.
 
@@ -69,6 +71,9 @@ Be at an ad film, a storyboard, a short reel or a quick video for your product, 
 - FFMPEG
 
 ## Network Diagram
+
+![Chalchitra-ai drawio](https://github.com/pranav2305/chalchitra.ai/assets/76661350/7bb2d29e-09c5-42cc-afbd-d025fa99792a)
+
 
 ## Installation and Setup Guide
 To get started with Comicify.ai, follow these steps:
