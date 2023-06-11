@@ -11,6 +11,7 @@ https://github.com/pranav2305/chalchitra.ai/assets/79962251/4702dac0-afc6-40cd-9
 
 https://github.com/pranav2305/chalchitra.ai/assets/79962251/c2df5a23-91ea-44bb-903e-d3017dab472a
 
+https://github.com/pranav2305/chalchitra.ai/assets/79962251/6eca2386-4ea6-4c93-8b13-8bc6800a1767
 
 
 ## Table of content
