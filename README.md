@@ -6,8 +6,12 @@ Transform your text into captivating, lipsynced animated videos effortlessly, wi
 ## Demo
 https://github.com/pranav2305/chalchitra.ai/assets/76661350/b4e278c8-4e91-4220-82d2-b84cb6d267b5
 
-## Example
+## Examples
 https://github.com/pranav2305/chalchitra.ai/assets/79962251/4702dac0-afc6-40cd-9ca4-0fe584d308ed
+
+https://github.com/pranav2305/chalchitra.ai/assets/79962251/c2df5a23-91ea-44bb-903e-d3017dab472a
+
+
 
 ## Table of content
 1. [Project Idea](#project-idea)
