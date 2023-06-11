@@ -29,20 +29,15 @@ def test():
     """
     return 'The server is running!'
 
-# TODO: Convert to POST request
-@app.route('/gen', methods=['GET'])
+@app.route('/', methods=['POST'])
 def generate_movie_from_text():
-    # user_input = request.get_json()['userInput']
-    # language = request.get_json()['language']
-    language = 'hi-IN'
-    # response = convert_text_to_script(user_input)
-    response = generate_script_from_text("""Transform your text into captivating short animated videos effortlessly. Chalchitra.ai brings your words to life with vibrant visuals and engaging animations.
 
-With Chalchitra.ai, your animated videos come alive with perfectly synchronized lip movements. Each character in the video seamlessly matches the spoken words, enhancing the realism and impact of your content.
-
-Chalchitra.ai goes beyond language barriers. It offers extensive multilingual support, including a diverse range of Indian languages. 
-
-Be at an ad film, a storyboard, a short reel or a quick video for your product, Chalchitra.ai has got you covered""")
+    user_input = request.get_json()['userInput']
+    language = request.get_json()['language']
+    # language = 'hi-IN'
+    language_code = language.split('-')[0]
+    response = generate_script_from_text(user_input)
+    # response = generate_script_from_text("An indian girl trying to enter the army")
 
     print(response)
     # use timestamp as story_id
@@ -75,7 +70,7 @@ Be at an ad film, a storyboard, a short reel or a quick video for your product, 
                 print(image_path)
 
                 subtitles.append(dialogue['dialogue'])
-                translated_text = translate_text(language, dialogue['dialogue'])
+                translated_text = translate_text(language_code, dialogue['dialogue'])
                 print(translated_text)
 
                 # Call the generate_speech_from_text function with the appropriate parameters
@@ -92,4 +87,4 @@ Be at an ad film, a storyboard, a short reel or a quick video for your product, 
 
     # Call stitch videos
     stitch_videos(generated_videos_paths, f"./results/outputs/{story_id}_output.mp4")
-    return send_file(f"./results/outputs/{story_id}_output.mp4", mimetype='video/mp4')
+    return send_file(f"./results/outputs/{story_id}_output.mp4", mimetype='video/mp4', as_attachment=True)
