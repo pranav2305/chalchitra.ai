@@ -33,9 +33,9 @@ export default function Header() {
           </div>
 
           {/* Desktop navigation */}
-          <nav className="hidden md:flex md:grow">
+          {/* <nav className="hidden md:flex md:grow"> */}
             {/* Desktop sign in links */}
-            <ul className="flex grow justify-end flex-wrap items-center">
+            {/* <ul className="flex grow justify-end flex-wrap items-center">
               <li>
                 <Link href="/signin" className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out">Sign in</Link>
               </li>
@@ -47,11 +47,11 @@ export default function Header() {
                   </svg>
                 </Link>
               </li>
-            </ul>
+            </ul> */}
 
-          </nav>
+          {/* </nav> */}
 
-          <MobileMenu />
+          {/* <MobileMenu /> */}
 
         </div>
       </div>
